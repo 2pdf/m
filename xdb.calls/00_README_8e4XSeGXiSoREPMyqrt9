@@ -1,0 +1,14 @@
+0) The data/ directory and the db file must be writeable by others.
+The directory must be writeable to allow the creation of temporary
+files (journal) by the sqlite process.
+
+1) adm_WT3UZXj1H6J5bzlggDw8.php is actually adminer-4.1.0-en.php
+Changed its name so that it's harder to call by chance.
+
+2) If PHP has no support for openssl (no library compiled in), one
+can use phpsec instead. If it is however available, see signature_example.php
+
+3) pubkey.pem is the RSA certificate used to verify the signature of uploaded
+data.
+
+4) Data are kept encoded in UTF-8

@@ -1,0 +1,37 @@
+<?php
+//  UPLOAD A FILE
+//  How to use:
+//  curl -k -F uploaded_file=@a.txt https://path/upload.php
+
+////// An appropriate HTML form would be
+//  <form enctype="multipart/form-data" action="enoi_upload.php" method="post">
+//    Choose a file to upload: <input name="uploaded_file" type="file" />
+//    <input type="submit" value="Upload" />
+//  </form>
+
+
+
+header('Content-type: text/html; charset=utf-8');
+// Check that we have a file
+if((!empty($_FILES["uploaded_file"])) && ($_FILES['uploaded_file']['error'] == 0)) {
+    $filename = basename($_FILES['uploaded_file']['name']);
+
+    //Determine the path to which we want to save this file
+      $newname = dirname(__FILE__).'/'.$filename;
+      //Check if the file with the same name is already exists on the server
+      if (!file_exists($newname)) {
+        //Attempt to move the uploaded file to it's new place 
+	//and also update the _latest_ file
+        if ((move_uploaded_file($_FILES['uploaded_file']['tmp_name'],$newname)) 
+        ) {
+           echo "Το αρχείο αποθηκεύθηκε ως: ".$newname;
+        } else {
+           echo "Σφάλμα μεταφόρτωσης";
+        }
+      } else {
+         echo "Σφάλμα: το αρχείο ".$_FILES["uploaded_file"]["name"]." υπάρχει ήδη";
+      }
+ } else {
+ echo "Error: No file uploaded";
+}
+?>

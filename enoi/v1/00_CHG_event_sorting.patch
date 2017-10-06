@@ -1,0 +1,25 @@
+
+
+The new default per day event sorting is done on their creation time.
+Change that to alphabetic order!
+
+--- common/retrieve.php	2016-02-13 12:49:12.000000000 +0200
++++ common/retrieve.php.new	2016-03-18 03:26:11.000000000 +0200
+@@ -31,7 +31,9 @@
+ $evtList = array();
+ 
+ //sort on start time + date-time added (last added event at the top)
+-function sortEvt($a,$b) { return strcmp(str_pad($a['sti'],5).$b['adt'], str_pad($b['sti'],5).$a['adt']); }
++//CHG change per day event sort function to alphabetic order 
++//CHGfunction sortEvt($a,$b) { return strcmp(str_pad($a['sti'],5).$b['adt'], str_pad($b['sti'],5).$a['adt']); }
++function sortEvt($a, $b) { return strcmp($a['tit'], $b['tit']); } 
+ 
+ //main function
+ function retrieve($start,$end,$iFilter='',$xFilter='') {
+@@ -275,4 +277,4 @@
+ 	$nxtD = date('Y-m-d', $day1Ts + (86400 * $offset));
+ 	return $nxtD;
+ }
+-?>
+\ No newline at end of file
++?>

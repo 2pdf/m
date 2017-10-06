@@ -11,12 +11,12 @@
 
 
 // are we running under openshift?
-$dataDir="/data/xdb.xp";
+$dataDir="/data/xp.calls";
 if (getenv(OPENSHIFT_DATA_DIR)) {
 	$dataDir = getenv(OPENSHIFT_DATA_DIR);
 }
 
-define(DB, $dataDir . "/xp.sqlite");
+define(DB, $dataDir . "/calls.sqlite");
 define(MAXFILESIZE, 100000);
 
 define(TIME_DIFF, 1.0*60); // the current time should not differ more
