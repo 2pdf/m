@@ -11,7 +11,7 @@
 
 
 // are we running under openshift?
-$dataDir="/data/xp.calls";
+$dataDir="/data/xdb.calls";
 if (getenv(OPENSHIFT_DATA_DIR)) {
 	$dataDir = getenv(OPENSHIFT_DATA_DIR);
 }
