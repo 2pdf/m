@@ -15,8 +15,8 @@ $dataDir="/data/xdb.xp";
 if (getenv(OPENSHIFT_DATA_DIR)) {
 	$dataDir = getenv(OPENSHIFT_DATA_DIR);
 }
-
 define(DB, $dataDir . "/xp.sqlite");
+
 define(MAXFILESIZE, 100000);
 
 define(TIME_DIFF, 1.0*60); // the current time should not differ more
